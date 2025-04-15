@@ -1,0 +1,32 @@
+# LND in Neutrino Mode: Lightweight Client Mode
+lnd --bitcoin.active --bitcoin.testnet --bitcoin.node=neutrino
+
+# Install with Homebrew
+brew install lnd
+
+# Or download binary from GitHub
+https://github.com/lightningnetwork/lnd/releases
+
+# LND Configuration:
+# Create a file ~/.lnd/lnd.conf with the following content:
+
+[Application Options]
+debuglevel=info
+maxpendingchannels=10
+alias=bisq-bln-test-node
+listen=localhost:9735
+
+[Bitcoin]
+bitcoin.active=true
+bitcoin.testnet=true
+bitcoin.node=neutrino
+
+[Neutrino]
+neutrino.connect=faucet.lightning.community
+# neutrino.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json
+
+[protocol]
+protocol.wumbo-channels=true
+
+[Wtclient]
+wtclient.active=true

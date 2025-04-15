@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="network.bisq.blnfeepoc.controller.MainController"
+      prefHeight="500.0" prefWidth="700.0">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Bitcoin P2P Trading with Lightning Network (PoC)" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="LND Node:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="nodeInfoLabel" text="Loading..."/>
+        <Button fx:id="refreshNodeInfoButton" text="Refresh" onAction="#updateNodeInfo"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Wallet:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="balanceLabel" text="Loading..."/>
+    </HBox>
+
+    <Separator/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Amount (Satoshis):" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="amountField" text="10000" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Price per Bitcoin (USD):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="priceField" text="65000" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button fx:id="createTradeButton" text="Create Trade" onAction="#handleCreateTrade"/>
+        <Button fx:id="payFeeButton" text="Pay Fee" onAction="#handlePayFee"/>
+    </HBox>
+
+    <Label text="Status:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="statusLabel" text="Ready for trade creation"/>
+
+    <Label text="Fee:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="feeLabel" text="No fee calculated yet"/>
+</VBox>
